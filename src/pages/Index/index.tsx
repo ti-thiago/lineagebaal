@@ -1,23 +1,65 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./index.css";
+import "./js/main";
+import LogoFb from "../../images/facebook-button.png";
+import LogoWhite from "../../images/logo-white.png";
+import LogoDark from "../../images/logo-dark.png";
+import Slide from "../../images/slider-img.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// var swiper: any = new Swiper(".swiper-container", {
+//   autoplay: {
+//     delay: 4000,
+//   },
+//   speed: 1000,
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
+// });
 const Index: React.FC = () => {
-  const [loading, setLoading] = useState(false);
+  const [displayCommunity, setDisplayCommunity] = useState(false);
+  const [displayGame, setDisplayGame] = useState(false);
+
+  const [displayLogin, setDisplayLogin] = useState(false);
+
+  const toggleDropDown = useCallback(
+    (e: any) => {
+      if (!e.target.closest("[data-class]")) {
+        setDisplayCommunity(false);
+        setDisplayGame(false);
+      } else if (!!displayCommunity) {
+        setDisplayGame(false);
+      } else if (!!displayGame) {
+        setDisplayCommunity(false);
+      }
+    },
+    [displayCommunity, displayGame]
+  );
+  useEffect(() => {
+    document.addEventListener("click", toggleDropDown);
+
+    return () => {
+      document.removeEventListener("click", toggleDropDown);
+    };
+  }, [toggleDropDown]);
   return (
     <>
       <div className="socBlock">
         <a href="" className="fb"></a>
         <a href="" className="dc"></a>
       </div>
+
       <div className="toTop buttonTop">TOP</div>
+
       <div className="topPanel flex-c">
-        <div className="topButton menuButton" data-className="nav">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="topButton menuButton" data-class="nav">
+          <span>asdf</span>
+          <span>asdfg</span>
+          <span>asdfgh</span>
         </div>
         <a href="/" className="topPanel-logo">
-          <img src="images/logo-white.png" alt="Logo" />
+          <img src={LogoWhite} alt="Logo" />
         </a>
         <nav className="nav flex-c">
           <div className="topPanel-menu flex-c">
@@ -29,47 +71,66 @@ const Index: React.FC = () => {
                 <a href="#">Create account</a>
               </li>
               <li>
-                <a data-className="m_3" className="menu-a">
+                <a
+                  data-class="m_3"
+                  className="menu-a"
+                  onClick={() => {
+                    setDisplayGame((prev) => !prev);
+                    console.log(displayGame);
+                  }}
+                >
                   Game
                 </a>
-                <ul className="dropDown-menu m_3">
-                  <li>
-                    <a href="">Statistic</a>
-                  </li>
-                  <li>
-                    <a href="">Guides</a>
-                  </li>
-                  <li>
-                    <a href="">Support</a>
-                  </li>
-                  <li>
-                    <a href="">Characters & Races</a>
-                  </li>
-                </ul>
+                {displayGame && (
+                  <ul className="dropDown-menu m_3">
+                    <li>
+                      <a href="">Statistic</a>
+                    </li>
+                    <li>
+                      <a href="">Guides</a>
+                    </li>
+                    <li>
+                      <a href="#">Support</a>
+                    </li>
+                    <li>
+                      <a href="">Characters & Races</a>
+                    </li>
+                  </ul>
+                )}
               </li>
               <li>
-                <a data-className="m_4" className="menu-a">
+                <a
+                  data-class="m_4"
+                  className="menu-a"
+                  onClick={() => setDisplayCommunity((prev) => !prev)}
+                >
                   Community
                 </a>
-                <ul className="dropDown-menu m_4">
-                  <li>
-                    <a href="">Statistic</a>
-                  </li>
-                  <li>
-                    <a href="">Guides</a>
-                  </li>
-                  <li>
-                    <a href="">Support</a>
-                  </li>
-                  <li>
-                    <a href="">Characters & Races</a>
-                  </li>
-                </ul>
+                {displayCommunity && (
+                  <ul className="dropDown-menu m_4">
+                    <li>
+                      <a href="">Statistic</a>
+                    </li>
+                    <li>
+                      <a href="">Guides</a>
+                    </li>
+                    <li>
+                      <a href="">Support</a>
+                    </li>
+                    <li>
+                      <a href="">Characters & Races</a>
+                    </li>
+                  </ul>
+                )}
               </li>
             </ul>
           </div>
           <div className="topPanel-button flex-c">
-            <a href="#modal-login" className="loginButton bright open_modal">
+            <a
+              href="#modal-login"
+              className="loginButton"
+              onClick={() => setDisplayLogin(true)}
+            >
               Log In
             </a>
             <a href="" className="downloadButton bright">
@@ -86,7 +147,7 @@ const Index: React.FC = () => {
         <header className="header">
           <div className="logo">
             <a href="/">
-              <img src="images/logo-dark.png" alt="Logo" />
+              <img src={LogoDark} alt="Logo" />
             </a>
           </div>
           <div className="serverBlock flex">
@@ -171,35 +232,30 @@ const Index: React.FC = () => {
                   <span></span>
                 </a>
               </h2>
-
               <div className="swiper-container">
                 <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <a href="" className="swiper-link">
-                      <img src="images/slider-img.jpg" alt="" />
-                      <p>Gift for news players</p>
-                    </a>
-                  </div>
-                  <div className="swiper-slide">
-                    <a href="" className="swiper-link">
-                      <img src="images/slider-img.jpg" alt="" />
-                      <p>Gift for news players</p>
-                    </a>
-                  </div>
-                  <div className="swiper-slide">
-                    <a href="" className="swiper-link">
-                      <img src="images/slider-img.jpg" alt="" />
-                      <p>Gift for news players</p>
-                    </a>
-                  </div>
-                  <div className="swiper-slide">
-                    <a href="" className="swiper-link">
-                      <img src="images/slider-img.jpg" alt="" />
-                      <p>Gift for news players</p>
-                    </a>
-                  </div>
+                  <Swiper
+                    slidesPerView={3}
+                    navigation
+                    pagination={{ clickable: true }}
+                    scrollbar={{ draggable: true }}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    onSlideChange={() => console.log("slide change")}
+                  >
+                    <SwiperSlide>
+                      <img src={Slide} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src={Slide} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src={Slide} alt="" />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                      <img src={Slide} alt="" />
+                    </SwiperSlide>
+                  </Swiper>
                 </div>
-
                 <div className="swiper-pagination"></div>
               </div>
             </div>
@@ -208,10 +264,10 @@ const Index: React.FC = () => {
             <h2 className="content-title dark-title">Find out our streamers</h2>
             <div className="flex streamBlock">
               <a href="" className="twitchBlock">
-                <img src="images/twitch-icon.png" alt="Twitch" />
+                <img src="../../images/twitch-icon.png" alt="Twitch" />
               </a>
               <a href="" className="youtubeBlock">
-                <img src="images/youtube-icon.png" alt="Youtube" />
+                <img src="../../images/youtube-icon.png" alt="Youtube" />
               </a>
             </div>
           </div>
@@ -274,7 +330,7 @@ const Index: React.FC = () => {
         </div>
         <div className="footerBottomBlock">
           <p>
-            <span>© 2019</span> Giran: Lineage 2
+            <span>© 21</span> Lineage II BaaL
           </p>
           <p>
             This server is a test option of the game lineage 2 and is intended
@@ -283,40 +339,41 @@ const Index: React.FC = () => {
           <p>All rights owned by NCSOFT</p>
         </div>
       </footer>
-
-      <div id="modal-login" className="modal_div t-center">
-        <div className="modal_close">
-          <span></span>
-          <span></span>
+      {displayLogin && (
+        <div id="modal-login" className="modal_div t-center">
+          <div className="modal_close" onClick={() => setDisplayLogin(false)}>
+            <span></span>
+            <span></span>
+          </div>
+          <h1>Login</h1>
+          <a href="#">
+            <img src={LogoFb} alt="" />
+          </a>
+          <div className="or">Or</div>
+          <form className="form-width">
+            <p>
+              <input type="text" placeholder="Login" />
+            </p>
+            <p>
+              <input type="password" placeholder="Password" />
+            </p>
+            <p>
+              <button>ok</button>
+            </p>
+          </form>
+          <div className="formlinks">
+            <p>
+              <a href="">Forgot your password ?</a>
+            </p>
+            <p>
+              Dont`t have an account ?{" "}
+              <a href="" className="reg">
+                Register
+              </a>
+            </p>
+          </div>
         </div>
-        <h1>Login</h1>
-        <a href="#">
-          <img src="images/facebook-button.png" alt="" />
-        </a>
-        <div className="or">Or</div>
-        <form className="form-width">
-          <p>
-            <input type="text" placeholder="Login" />
-          </p>
-          <p>
-            <input type="password" placeholder="Password" />
-          </p>
-          <p>
-            <button>ok</button>
-          </p>
-        </form>
-        <div className="formlinks">
-          <p>
-            <a href="">Forgot your password ?</a>
-          </p>
-          <p>
-            Dont`t have an account ?{" "}
-            <a href="" className="reg">
-              Register
-            </a>
-          </p>
-        </div>
-      </div>
+      )}
       <div id="overlay"></div>
     </>
   );

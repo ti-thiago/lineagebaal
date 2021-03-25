@@ -450,7 +450,6 @@ button:hover,
     rgba(2, 2, 2, 0)
   );
   padding: 30px 0px 100px 0px;
-  display: none;
 }
 .topPanel .menu .dropDown-menu li {
   height: auto;
@@ -507,8 +506,7 @@ button:hover,
   left: 50%;
   margin-left: -215px;
   margin-top: -50px;
-  display: none;
-  opacity: 0;
+  opacity: 0.9;
   z-index: 999;
   padding: 45px 60px 45px 60px;
   box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.2);
