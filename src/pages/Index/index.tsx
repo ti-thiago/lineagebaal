@@ -32,14 +32,14 @@ const Index: React.FC = () => {
         const resp = await api.get("/");
         setcharactersData(resp.data);
 
-        const body = {
-          login: "thiago",
-          password: "thiago",
-          email: "thiago@thiago.thiago",
-        };
+        // const body = {
+        //   login: "thiago",
+        //   password: "thiago",
+        //   email: "thiago@thiago.thiago",
+        // };
 
-        const x = await api.post("/", body);
-        console.log("xxx", x);
+        // const x = await api.post("/", body);
+        // console.log("xxx", x);
       } catch (e) {
         console.log(e.message);
       } finally {
