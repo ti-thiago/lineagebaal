@@ -5,7 +5,7 @@ import api from "../../services/api";
 const Page: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
-  const [charactersData, setcharactersData] = useState<any>(null);
+  const [charactersData, setcharactersData] = useState<any[]>([]);
   useEffect(() => {
     async function getData() {
       try {
@@ -35,9 +35,9 @@ const Page: React.FC = () => {
           <span></span>
           <span></span>
         </div>
-        {charactersData.map((char: any) => (
-          <h1>{JSON.stringify(char)}</h1>
-        ))}
+        {charactersData &&
+          charactersData.length &&
+          charactersData?.map((char: any) => <h1>{JSON.stringify(char)}</h1>)}
         <h1>Login</h1>
         <a href="#"></a>
         <div className="or">Or</div>
