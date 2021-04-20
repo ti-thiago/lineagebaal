@@ -8,16 +8,19 @@ import api from "../../services/api";
 import { Form } from "@unform/web";
 import Input from "../Input";
 import toast, { Toaster } from "react-hot-toast";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Header: React.FC = () => {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
 
   const [displayLogin, setDisplayLogin] = useState(false);
+
   const [displayRegister, setDisplayRegister] = useState(false);
   const [displayCommunity, setDisplayCommunity] = useState(false);
   const [displayGame, setDisplayGame] = useState(false);
   const [resp, setResp] = useState<string>("");
+  const history = useHistory();
   const toggleDropDown = useCallback((e: any) => {
     if (!e.target.closest("[data-class]")) {
       setDisplayCommunity(false);
@@ -31,10 +34,14 @@ const Header: React.FC = () => {
 
   const handleSubmit = useCallback(async (data: any) => {
     try {
+      setLoading(true);
       const resp = await api.post("/", data);
       toast.success(resp.data);
+      history.push("/");
     } catch (err) {
       toast.error(`Ocorreu um erro ao cadastrar! ${err.message} `);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -64,7 +71,12 @@ const Header: React.FC = () => {
                 <a href="#">Home</a>
               </li>
               <li>
-                <a href="#">Create account</a>
+                <a
+                  href="#modal-register"
+                  onClick={() => setDisplayRegister(true)}
+                >
+                  Register
+                </a>
               </li>
               <li>
                 <a
@@ -77,7 +89,7 @@ const Header: React.FC = () => {
                 {displayGame && (
                   <ul className="dropDown-menu m_3">
                     <li>
-                      <a href="">Statistic</a>
+                      <a href="/page">Statistic</a>
                     </li>
                     <li>
                       <a href="">Guides</a>
@@ -122,9 +134,9 @@ const Header: React.FC = () => {
             <a
               href="#modal-login"
               className="loginButton"
-              onClick={() => setDisplayRegister(true)}
+              onClick={() => setDisplayLogin(true)}
             >
-              Register
+              Log In
             </a>
             <a href="" className="downloadButton bright">
               Download
@@ -136,12 +148,8 @@ const Header: React.FC = () => {
           <a href="" className="dc"></a>
         </div>
       </div>
-      {/* {displayLogin && (
-        <div
-          id="modal-login"
-          className="modal_div t-center "
-          style={{ display: "none" }}
-        >
+      {displayLogin && (
+        <div id="modal-login" className="modal_div t-center ">
           <div className="modal_close" onClick={() => setDisplayLogin(false)}>
             <span></span>
             <span></span>
@@ -153,7 +161,7 @@ const Header: React.FC = () => {
           <div className="or">Or</div>
           <form className="form-width">
             <p>
-              <input  placeholder="Login" />
+              <input placeholder="Login" />
             </p>
             <p>
               <input type="password" placeholder="Password" />
@@ -174,7 +182,7 @@ const Header: React.FC = () => {
             </p>
           </div>
         </div>
-      )} */}
+      )}
       {displayRegister && (
         <div id="modal-login" className="modal_div t-center ">
           <div

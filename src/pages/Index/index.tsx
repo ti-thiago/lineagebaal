@@ -1,10 +1,9 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import "./index.css";
-
+import { Link, useHistory, useLocation } from "react-router-dom";
 import LogoDark from "../../images/logo-dark.png";
 import Slide from "../../images/slider-img.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import api from "../../services/api";
 import Header from "../../components/Header";
 
 // var swiper: any = new Swiper(".swiper-container", {
@@ -18,30 +17,6 @@ import Header from "../../components/Header";
 //   },
 // });
 const Index: React.FC = () => {
-  const [charactersData, setcharactersData] = useState<any>(null);
-
-  useEffect(() => {
-    async function getData() {
-      try {
-        const resp = await api.get("/");
-        setcharactersData(resp.data);
-
-        // const body = {
-        //   login: "thiago",
-        //   password: "thiago",
-        //   email: "thiago@thiago.thiago",
-        // };
-
-        // const x = await api.post("/", body);
-        // console.log("xxx", x);
-        console.log(resp.data);
-      } catch (e) {
-        console.log("erro requisição>", e.message);
-      }
-    }
-    getData();
-  }, []);
-
   return (
     <>
       <div className="socBlock">
