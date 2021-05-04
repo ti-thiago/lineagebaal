@@ -3,6 +3,7 @@ import { Switch, BrowserRouter, Redirect } from "react-router-dom";
 import Route from "./Route";
 import Index from "../pages/Index";
 import Page from "../pages/Page";
+import FirstPage from "../pages/FirstPage";
 import Header from "../components/Header";
 
 const Routes: React.FC = () => {
@@ -10,6 +11,7 @@ const Routes: React.FC = () => {
     <Switch>
       <BrowserRouter>
         <Route path="/" exact component={Index} />
+        {/* <Route path="/index" exact component={Index} /> */}
 
         <Route path="/page" component={Page} />
         <Route path="/header" component={Header} />

@@ -81,13 +81,15 @@
 }
 .topPanel .downloadButton {
   text-transform: uppercase;
-  font-size: 24px;
+
   font-weight: bold;
   background: #551172;
   height: 100px;
   line-height: 100px;
   padding: 0px 100px;
   margin-left: 32px;
+
+  background: #b10000;
 }
 .topPanel .loginButton {
   text-transform: uppercase;

@@ -10,7 +10,7 @@ const Page: React.FC = () => {
     async function getData() {
       try {
         const resp = await api.get("/");
-        setcharactersData(resp.data);
+        setcharactersData(resp.data.rows);
 
         // const body = {
         //   login: "thiago",
@@ -37,32 +37,12 @@ const Page: React.FC = () => {
         </div>
         {charactersData &&
           charactersData.length &&
-          charactersData?.map((char: any) => <h1>{JSON.stringify(char)}</h1>)}
-        <h1>Login</h1>
+          charactersData?.map((char: any) => <h1>Char:{char.char_name}/ PVPs:{char.pvpkills}</h1>)}
+       
         <a href="#"></a>
-        <div className="or">Or</div>
-        <form className="form-width">
-          <p>
-            <input placeholder="Login" />
-          </p>
-          <p>
-            <input type="password" placeholder="Password" />
-          </p>
-          <p>
-            <button>ok</button>
-          </p>
-        </form>
-        <div className="formlinks">
-          <p>
-            <a href="">Forgot your password ?</a>
-          </p>
-          <p>
-            Dont`t have an account ?{" "}
-            <a href="" className="reg">
-              Register
-            </a>
-          </p>
-        </div>
+       
+
+
       </div>
     </>
   );

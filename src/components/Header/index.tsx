@@ -19,8 +19,11 @@ const Header: React.FC = () => {
   const [displayRegister, setDisplayRegister] = useState(false);
   const [displayCommunity, setDisplayCommunity] = useState(false);
   const [displayGame, setDisplayGame] = useState(false);
+
   const [resp, setResp] = useState<string>("");
+
   const history = useHistory();
+
   const toggleDropDown = useCallback((e: any) => {
     if (!e.target.closest("[data-class]")) {
       setDisplayCommunity(false);
@@ -68,9 +71,6 @@ const Header: React.FC = () => {
           <div className="topPanel-menu flex-c">
             <ul className="menu flex">
               <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
                 <a
                   href="#modal-register"
                   onClick={() => setDisplayRegister(true)}
@@ -84,7 +84,7 @@ const Header: React.FC = () => {
                   className="menu-a"
                   onClick={() => setDisplayGame((prev) => !prev)}
                 >
-                  Game
+                  Features
                 </a>
                 {displayGame && (
                   <ul className="dropDown-menu m_3">
@@ -107,11 +107,12 @@ const Header: React.FC = () => {
                 <a
                   data-class="m_4"
                   className="menu-a"
-                  onClick={() => setDisplayCommunity((prev) => !prev)}
+                  href="https://discord.gg/r6945nuQRX"
+                  target="_blank"
                 >
-                  Community
+                  Discord
                 </a>
-                {displayCommunity && (
+                {/* {displayCommunity && (
                   <ul className="dropDown-menu m_4">
                     <li>
                       <a href="">Statistic</a>
@@ -126,7 +127,7 @@ const Header: React.FC = () => {
                       <a href="">Characters & Races</a>
                     </li>
                   </ul>
-                )}
+                )} */}
               </li>
             </ul>
           </div>

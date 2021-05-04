@@ -5,6 +5,8 @@ import LogoDark from "../../images/logo-dark.png";
 import Slide from "../../images/slider-img.jpg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Header from "../../components/Header";
+import ReactPlayer from "react-player";
+import Ranking from "../../components/Ranking";
 
 // var swiper: any = new Swiper(".swiper-container", {
 //   autoplay: {
@@ -31,20 +33,13 @@ const Index: React.FC = () => {
           <div className="logo">
             <a href="/">
               <img src={LogoDark} alt="Logo" />
+              <p>LINEAGE 2 ESSENCE</p>
             </a>
           </div>
           <div className="serverBlock flex">
             <div className="server server_1">
-              <p>X50 Nightmare</p>
-              <span>Upcoming 22.10</span>
-            </div>
-            <div className="server server_2">
-              <p>X300 Paradise</p>
-              <span>9864</span>
-            </div>
-            <div className="server server_3">
-              <p>X1000 Warland</p>
-              <span>7853</span>
+              <p>New Class Included</p>
+              <span>Death Knight</span>
             </div>
           </div>
           <div className="stars">
@@ -59,104 +54,65 @@ const Index: React.FC = () => {
           </div>
         </div>
         <main className="content">
+          <div style={{ display: "flex" }}>
+            <ReactPlayer url="https://www.youtube.com/watch?v=GPDY61SA9bg" />
+            <ReactPlayer url="https://www.youtube.com/watch?v=GPDY61SA9bg" />
+          </div>
+          <h4 className="content-title">
+            Features
+            <a href="#" className="more">
+              <span></span>
+              <span></span>
+            </a>
+            <p>General Server Info</p>
+          </h4>
           <div className="flex-s block">
-            <div className="newsBlock">
-              <h2 className="content-title white-title">
-                News{" "}
-                <a href="#" className="more">
-                  <span></span>
-                  <span></span>
-                </a>
-              </h2>
-              <div className="newsFeed flex-s">
-                <a
-                  href="#"
-                  className="news"
-                  style={{
-                    backgroundImage: `url(images / news - img_1.jpg)`,
-                  }}
-                >
-                  <div className="news-info">
-                    <h3>
-                      <span>[Hot]</span> Upcoming 22.10 x50 Nightmare
-                    </h3>
-                    <div className="date">10.09</div>
-                  </div>
-                </a>
-                <a
-                  href="#"
-                  className="news"
-                  style={{
-                    backgroundImage: `url(images / news - img_2.jpg)`,
-                  }}
-                >
-                  <div className="news-info">
-                    <h3>
-                      <span>[Update]</span> New Fafurion Boss update
-                    </h3>
-                    <div className="date">10.09</div>
-                  </div>
-                </a>
-                <a
-                  href="#"
-                  className="news"
-                  style={{
-                    backgroundImage: `url(images / news - img_3.jpg)`,
-                  }}
-                >
-                  <div className="news-info">
-                    <h3>
-                      <span>[Event]</span> Social Media Events
-                    </h3>
-                    <div className="date">10.09</div>
-                  </div>
-                </a>
+            <div className="news-info">
+              <h5 className="sub-title">
+                Server Rates
+                <p>General Information about Asteroth</p>
+              </h5>
+
+              <br />
+              <div className="date">
+                <a href="" className="exp-img"></a>
+                <p>Experience </p>
+                <h1>10x</h1>
+              </div>
+
+              <div className="date">
+                <a href="" className="adena-img"></a>
+                <p>Adena</p> <h1>3x</h1>
+              </div>
+
+              <div className="date">
+                <a href="" className="enchant-img"></a>
+                <p>Safe</p>
+                <h1>+3</h1> <p style={{ marginLeft: 5 }}>Max</p>
+                <h1>+16</h1>
               </div>
             </div>
             <div className="eventsBlock">
-              <h2 className="content-title white-title">
-                Events{" "}
+              <h4 className="content-title">
+                Rank
                 <a href="#" className="more">
                   <span></span>
                   <span></span>
                 </a>
-              </h2>
-              <div className="swiper-container">
-                <div className="swiper-wrapper">
-                  <Swiper
-                    slidesPerView={3}
-                    navigation
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                    onSwiper={(swiper) => console.log(swiper)}
-                    onSlideChange={() => console.log("slide change")}
-                  >
-                    <SwiperSlide>
-                      <img src={Slide} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <img src={Slide} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <img src={Slide} alt="" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                      <img src={Slide} alt="" />
-                    </SwiperSlide>
-                  </Swiper>
-                </div>
-                <div className="swiper-pagination"></div>
-              </div>
+                <p>The best of the best</p>
+              </h4>
+
+              <Ranking />
             </div>
           </div>
           <div className="block blockBorder">
             <h2 className="content-title dark-title">Find out our streamers</h2>
             <div className="flex streamBlock">
               <a href="" className="twitchBlock">
-                <img src="../../images/twitch-icon.png" alt="Twitch" />
+                <img src="images/twitch-icon.png" alt="Twitch" />
               </a>
               <a href="" className="youtubeBlock">
-                <img src="../../images/youtube-icon.png" alt="Youtube" />
+                <img src="images/youtube-icon.png" alt="Youtube" />
               </a>
             </div>
           </div>
