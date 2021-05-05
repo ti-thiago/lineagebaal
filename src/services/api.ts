@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://lineagebaal-2-m5mrf.ondigitalocean.app/peixinho",
+  baseURL: "https://lineagebaal-dpmhb.ondigitalocean.app/peixinho",
   timeout: 30000,
 });
 
